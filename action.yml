@@ -1,0 +1,12 @@
+name: "Using Deploy key Actions"
+description: "Run git command using Deploy key"
+author: "grandcolline"
+inputs:
+  cmd:
+    description: "run command"
+    required: true
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.cmd }}

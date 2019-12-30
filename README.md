@@ -1,6 +1,6 @@
 # using-deploykey
 
-Execute Git command using Deploy key.
+GitHub Actions for execute Git command using Deploy key.
 
 ## Usage
 
@@ -11,9 +11,16 @@ Execute Git command using Deploy key.
 
 ### environments
 
-set deploy key.
-* key is `DEPLOY_KEY_[URL]`. url is replace all `[^0-9a-z]` to `_`
-* value is secrep key.
+set Deploy key.
+* key is `DEPLOY_KEY_[URL]`. `[Url]` is replaceall `[^0-9a-z]` to `_`
+* value is secret key.
+
+If ssh url is `git@github.com:grandcolline/private.git`, key is `DEPLOY_KEY_git_github_com_grandcolline_private_git`.
+
+```bash
+$ echo 'git@github.com:grandcolline/private.git' | sed -e "s/'//g" -e 's/[^0-9a-z]/_/g' -e "s/^/DEPLOY_KEY_/g"
+DEPLOY_KEY_git_github_com_grandcolline_private_git
+```
 
 ## Examples
 
@@ -21,7 +28,7 @@ set deploy key.
 - uses: actions/checkout@v1
 - uses: grandcolline/using-deploykey@master
   with:
-    cmd: "git clone git@github.com:grandcolline.private.git"
+    cmd: "git clone git@github.com:grandcolline/private.git"
   env:
     DEPLOY_KEY_git_github_com_grandcolline_private_git: ${{ secrets.p1 }}
 ```

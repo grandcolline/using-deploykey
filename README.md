@@ -12,7 +12,7 @@ GitHub Actions for execute Git command using Deploy key.
 ### environments
 
 set Deploy key.
-* key is `DEPLOY_KEY_[URL]`. `[Url]` is replaceall `[^0-9a-z]` to `_`
+* key is `DEPLOY_KEY_[URL]`. `[URL]` is replaceall `[^0-9a-z]` to `_`
 * value is secret key.
 
 If ssh url is `git@github.com:grandcolline/private.git`, key is `DEPLOY_KEY_git_github_com_grandcolline_private_git`.

@@ -1,8 +1,21 @@
 # using-deploykey
 
-Run git command using Deploy key
+Execute Git command using Deploy key.
 
 ## Usage
+
+### inputs
+
+* `cmd` is command you want to execute.
+* `dir` is relative path to execute command.
+
+### environments
+
+set deploy key.
+* key is `DEPLOY_KEY_[URL]`. url is replace all `[^0-9a-z]` to `_`
+* value is secrep key.
+
+## Examples
 
 ```
 - uses: actions/checkout@v1
@@ -18,6 +31,7 @@ Run git command using Deploy key
 - uses: grandcolline/using-deploykey@master
   with:
     cmd: "git submodule sync --recursive"
+    dir: "modules/"
   env:
     DEPLOY_KEY_git_github_com_grandcolline_private1_git: ${{ secrets.p1 }}
     DEPLOY_KEY_git_github_com_grandcolline_private2_git: ${{ secrets.p2 }}
